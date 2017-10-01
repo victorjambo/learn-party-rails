@@ -1,0 +1,188 @@
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  margin-bottom: 100px; }
+
+.navbar {
+  border-radius: 0px; }
+
+.navbar-nav li a {
+  line-height: 3em;
+  padding: 5px 10px; }
+
+#user-avatar a img {
+  height: 50px; }
+
+.card {
+  background-color: #fff;
+  /* just in case there no content*/
+  padding: 20px;
+  /* shadows and rounded borders */
+  border-radius: 2px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3); }
+
+.auth-or {
+  position: relative;
+  font-size: 18px;
+  color: #aaa;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.span-or {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  margin-left: -25px;
+  background-color: #fff;
+  width: 50px;
+  text-align: center; }
+
+.hr-or {
+  background-color: #cdcdcd;
+  height: 1px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important; }
+
+.btn-social > :first-child {
+  line-height: 43px; }
+
+#video-info {
+  overflow: auto; }
+
+#video-info ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+#video-info ul li {
+  display: inline;
+  padding: 5px; }
+
+#video-info ul li:nth-child(even) a {
+  border-left: 2px dotted #959595;
+  border-right: 2px dotted #959595;
+  padding: 0px 10px; }
+
+#video-info ul a {
+  text-decoration: none;
+  color: inherit; }
+
+.badge {
+  padding: 10px; }
+
+.popular-videos .badge {
+  margin: 5px; }
+
+.popular-videos .fa-youtube-play {
+  color: red; }
+
+.popular-videos .top-videos {
+  padding: 5px; }
+
+.popular-videos .top-videos:not(:last-child) {
+  border-bottom: 1px solid #d3d3d3; }
+
+#commentSection {
+  margin-top: 25px; }
+
+.likesVideo,
+.fa-heart:hover {
+  color: red; }
+
+#video-library > div {
+  margin-bottom: 50px; }
+
+#user-profile,
+.video-iframe {
+  width: 100%;
+  height: 225px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px; }
+
+section.video {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px; }
+
+section.video .title {
+  margin-top: -7.5px;
+  padding: 5px;
+  min-height: 75px;
+  background: #ecf0f1; }
+
+section.video p {
+  border-top: 1px dotted #d3d3d3;
+  padding: 5px;
+  color: #979797; }
+
+.incognito-text {
+  font-size: 0.8em;
+  color: #979797; }
+
+#user-profile p {
+  padding: 5px;
+  color: #979797; }
+
+#footer {
+  height: 75px;
+  position: absolute;
+  bottom: 0;
+  min-width: 100%;
+  background: #ecf0f1;
+  padding: 20px; }
+
+#footer .fa-heart {
+  color: red; }
+
+h1 {
+  margin-top: 0px; }
+
+#landing-page {
+  position: relative;
+  background: url("https://learn-party.herokuapp.com/images/bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  margin-top: -21px;
+  margin-bottom: 21px;
+  color: #fff; }
+
+.landing-page-title h1 {
+  font-size: 5em;
+  padding-top: 50px; }
+
+.landing-page-call-to-action {
+  padding-top: 50px; }
+
+.landing-page-title h2 {
+  padding-top: 50px;
+  padding-bottom: 15px; }
+
+.landing-page-title {
+  position: absolute;
+  top: 5%;
+  left: 15%; }
+
+.fa-chevron-circle-down {
+  position: absolute;
+  left: 45.5%;
+  color: #fff;
+  font-size: 3em;
+  bottom: 75px; }
+
+.site-highlight {
+  color: #18bc9c; }
+
+#video-library > div.row {
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e4e4e4; }
+
+.dashboard-float {
+  padding: 15px; }
+
+/*# sourceMappingURL=app.css.map */

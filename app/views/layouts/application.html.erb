@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to The Learn Party</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body id="app-layout">
+  	<nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+          <!-- Collapsed Hamburger -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+
+          <!-- Branding Image -->
+          <a class="navbar-brand" href="http://learn-party.herokuapp.com">
+              Learn Party
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+          <!-- Right Side Of Navbar -->
+          <ul class="nav navbar-nav navbar-right">
+              <!-- Authentication Links -->
+              <li><a href="http://learn-party.herokuapp.com/login">Login</a></li>
+              <li><a href="http://learn-party.herokuapp.com/register">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <%= yield %>
+
+    <div id="footer">
+      <strong>Made with <i class="fa fa-heart"></i>
+      <span class="incognito-text">By</span> <a href="https://github.com/victorjambo" target="_blank">VM</a></strong>
+      <span class="pull-right">
+        <strong> #TIA 2017</strong>
+      </span>
+    </div>
+  </body>
+</html>
