@@ -1,0 +1,6 @@
+20.times do
+	Video.create(
+		title: Faker::RickAndMorty.character,
+		url: Faker::RickAndMorty.character,
+		description: Faker::RickAndMorty.character)
+end

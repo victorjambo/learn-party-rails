@@ -22,17 +22,47 @@
           </button>
 
           <!-- Branding Image -->
-          <a class="navbar-brand" href="http://learn-party.herokuapp.com">
-              Learn Party
-          </a>
+          <%= link_to 'Learn Party', root_path, class: "navbar-brand" %>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
           <!-- Right Side Of Navbar -->
           <ul class="nav navbar-nav navbar-right">
               <!-- Authentication Links -->
-              <li><a href="http://learn-party.herokuapp.com/login">Login</a></li>
-              <li><a href="http://learn-party.herokuapp.com/register">Register</a></li>
+              <% if user_signed_in? %>
+                <li id="user-avatar">
+                  <a href="http://learn-party.herokuapp.com/profile">
+                    <img src="http://res.cloudinary.com/johnkariuki/image/upload/v1490700881/c6kmzhflnzr2zm0phwrp.jpg" class="img-circle">
+                  </a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <%= current_user.email %> <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <%= link_to root_path do %>
+                          <i class="fa fa-btn fa-user"></i> <%= current_user.email %>'s profile
+                      <% end %>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                      <%= link_to root_path do %>
+                        <i class="fa fa-btn fa-dashboard"></i> Dashboard
+                      <% end %>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                      <%= link_to destroy_user_session_path, method: :delete do %>
+                        <i class="fa fa-btn fa-power-off"></i> Logout
+                      <% end %>
+                    </li>
+                  </ul>
+                </li>
+              <% else %>
+                <li><%= link_to 'login', new_user_session_path %></li>
+                <li><%= link_to 'Register', new_user_registration_path %></li>
+              <% end %>
           </ul>
         </div>
       </div>
@@ -46,5 +76,8 @@
         <strong> #TIA 2017</strong>
       </span>
     </div>
+
+    <!-- JavaScripts -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </body>
 </html>

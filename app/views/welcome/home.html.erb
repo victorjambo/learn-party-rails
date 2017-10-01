@@ -4,8 +4,14 @@
     <h2>Get the best learning materials online. <strong class="site-highlight">On Demand. </strong></h2>
     <hr>
     <div class="landing-page-call-to-action">
-    	<a href="/login" class="btn btn-default">LOGIN</a>
-    	<a href="/register" class="btn btn-success">REGISTER</a>
+      <% if user_signed_in? %>
+        <%= link_to 'ADD NEW VIDEO', new_video_path, class: "btn btn-default" %>
+        <%= link_to 'VIEW MY PROFILE', new_video_path, class: "btn btn-success" %>
+
+      <% else %>
+      	<%= link_to 'LOGIN', new_user_session_path,class: "btn btn-default"  %>
+      	<%= link_to 'REGISTER', new_user_registration_path, class: "btn btn-success" %>
+      <% end %>
     </div>
   </section>
   <a href="#main-content" id="scroll-to-content"><i class="fa fa-chevron-circle-down"></i></a>
@@ -20,7 +26,8 @@
             <div class="panel-heading">
               <h3 class="panel-title">Videos By Category</h3>
             </div>
-            <div class="panel-body popular-videos"> <span class="badge"><a href="http://learn-party.herokuapp.com">All</a></span>
+            <div class="panel-body popular-videos">
+              <span class="badge"><%= link_to 'All', videos_path %></span>
               <span class="badge">
               	<a href="http://learn-party.herokuapp.com/category/pop">pop</a>
             	</span>
@@ -114,95 +121,44 @@
               </div>
           </div>
       </div>
-        <div class="col-md-9">
-            <div id="video-library">
-                <div class="row">
-                    <div class="col-sm-4 col-md-4">
-                        <a href="http://learn-party.herokuapp.com/videos/5">
-                            <img class="video-iframe" src="http://img.youtube.com/vi/CuD7SCqHB7k/0.jpg" allowfullscreen="">
-                        </a>
-                        <section class="video">
-                            <div class="title">
-                                <h4>
-                            <a href="http://learn-party.herokuapp.com/videos/5">
-                            Rust keynote
-                            
-                            </a>
-                        </h4>
-                            </div>
-                            <p>Rust keynote description</p>
-                        </section>
-                    </div>
-                    <div class="col-sm-4 col-md-4">
-                        <a href="http://learn-party.herokuapp.com/videos/4">
-                            <img class="video-iframe" src="http://img.youtube.com/vi/bYdTrQQk_zA/0.jpg" allowfullscreen="">
-                        </a>
-                        <section class="video">
-                            <div class="title">
-                                <h4>
-                            <a href="http://learn-party.herokuapp.com/videos/4">
-                            ljljlj
-                            
-                            </a>
-                        </h4>
-                            </div>
-                            <p>stuff</p>
-                        </section>
-                    </div>
-                    <div class="col-sm-4 col-md-4">
-                        <a href="http://learn-party.herokuapp.com/videos/3">
-                            <img class="video-iframe" src="http://img.youtube.com/vi/URiDdlAS6ls/0.jpg" allowfullscreen="">
-                        </a>
-                        <section class="video">
-                            <div class="title">
-                                <h4>
-                            <a href="http://learn-party.herokuapp.com/videos/3">
-                            Classic Man
-                            
-                            </a>
-                        </h4>
-                            </div>
-                            <p>Totally classy</p>
-                        </section>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 col-md-4">
-                        <a href="http://learn-party.herokuapp.com/videos/2">
-                            <img class="video-iframe" src="http://img.youtube.com/vi/kxLoycj4pJY/0.jpg" allowfullscreen="">
-                        </a>
-                        <section class="video">
-                            <div class="title">
-                                <h4>
-                            <a href="http://learn-party.herokuapp.com/videos/2">
-                            afsds
-                            
-                            </a>
-                        </h4>
-                            </div>
-                            <p>asdfasd</p>
-                        </section>
-                    </div>
-                    <div class="col-sm-4 col-md-4">
-                        <a href="http://learn-party.herokuapp.com/videos/1">
-                            <img class="video-iframe" src="http://img.youtube.com/vi/BzxjbS19MP0/0.jpg" allowfullscreen="">
-                        </a>
-                        <section class="video">
-                            <div class="title">
-                                <h4>
-                            <a href="http://learn-party.herokuapp.com/videos/1">
-                            Little Bit More
-                            
-                            </a>
-                        </h4>
-                            </div>
-                            <p>Published on Jul 27, 2016 &quot; Little Bit More&quot; is available at iTunes: http://smarturl.it/LittleBitMo <a href="http://learn-party.herokuapp.com/videos/1">. . .</a>
-                            </p>
-                        </section>
-                    </div>
-                </div>
+      <div class="col-md-9">
+        <div id="video-library">
+          <div class="row">
+            <% @recent_videos.each do |recent_video| %>
+              <div class="col-sm-4 col-md-4">
+                <%= link_to recent_video do %>
+                  <img class="video-iframe" src="http://img.youtube.com/vi/<%= recent_video.url %>/0.jpg" allowfullscreen="">
+                <% end %>
+                <section class="video">
+                  <div class="title">
+                    <h4>
+                      <%= link_to recent_video.title, recent_video %>
+                    </h4>
+                  </div>
+                    <p><%= recent_video.description %></p>
+                </section>
+              </div>
+            <% end %>
+          </div>
+          <div class="row">
+            <% @most_viewed_videos.each do |most_viewed_video| %>
+              <div class="col-sm-4 col-md-4">
+                <%= link_to most_viewed_video do %>
+                  <img class="video-iframe" src="http://img.youtube.com/vi/<%= most_viewed_video.url %>/0.jpg" allowfullscreen="">
+                <% end %>
+                <section class="video">
+                  <div class="title">
+                    <h4>
+                      <%= link_to most_viewed_video.title, most_viewed_video %>
+                    </h4>
+                  </div>
+                    <p><%= most_viewed_video.description %></p>
+                </section>
+              </div>
+            <% end %>
             </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

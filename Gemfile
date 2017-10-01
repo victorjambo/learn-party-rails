@@ -12,7 +12,14 @@ source 'https://rails-assets.org' do
 end
 
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
-
+gem 'faker'
+gem 'pry'
+gem 'simple_form', '~> 3.5'
+gem 'acts-as-taggable-on', '~> 5.0'
+gem 'acts_as_votable', '~> 0.10.0'
+gem 'devise', '~> 4.3'
+gem 'impressionist', '~> 1.6'
+gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'

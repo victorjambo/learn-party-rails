@@ -1,0 +1,106 @@
+<p id="notice"><%= notice %></p>
+
+<div id="main-content" class="container-fluid">
+	<div class="container">
+    <div class="col-md-12">
+        <h2><%= @video.title %></h2>
+        <iframe width="100%" height="500" src="http://www.youtube.com/embed/<%= @video.url %>" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-12">
+      <div id="video-info" class="well">
+        <ul class="stats-summary pull-left">
+            <li>
+                <i class="fa fa-comment"></i> <span id="commentsCount">0</span>
+            </li>
+            <li>
+                <%= link_to like_video_path(@video), id: "favorite_video", data: { placement: "bottom" }, method: :put, remote: :true do %>
+                  <i class="fa fa-heart"></i>
+                  <span class="favorites-count"><%= @video.get_upvotes.size %></span>
+                <% end %>
+            </li>
+            <li>
+                <i class="fa fa-eye"></i> <%= @video.impressionist_count(filter: :session_hash, filter: :ip_address) %>
+            </li>
+        </ul>
+        <div class="pull-right">            
+              Created by <a href="http://learn-party.herokuapp.com/users/32"> john</a> <span class="incognito-text">2 weeks ago</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div id="video-tags" class="well">                        
+        <span class="badge">
+          <a href="http://learn-party.herokuapp.com/category/pop">pop</a>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div id="video-description" class="well">
+        <p><%= @video.title %> description</p>
+        <p><%= raw @video.tag_list.map{ |tag| link_to tag, tag_path(tag) }.join(', ') %></p>
+        <p><%= @video.description %></p>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <ul class="nav nav-tabs" role="tablist" id="comment-section">
+          <li class="active">
+          	<a href="#all-comments" role="tab" data-toggle="tab">Comments</a>
+          </li>
+          <li>
+          	<% if user_signed_in? %>
+          		<a href="#new-comment" role="tab" data-toggle="tab">Add comment</a>
+          	<% end %>
+          </li>              
+        </ul>
+        <div id="commentSection" class="tab-content">
+          <div class="tab-pane active" id="all-comments">
+            <ul class="media-list">
+            	<li class="media">
+            		<a class="media-left" href="#">
+            			<img class="media-object img-circle img-thumbnail" src="https://avatars.githubusercontent.com/u/16223627?v=3" alt="John Kariuki" style="width:100px;">
+            		</a>
+            		<div class="media-body">
+            			<div class="well">
+            				<h4 class="media-heading">John Kariuki</h4>
+            				<h6 class="pull-right">8 months ago</h6>
+            				<p class="media-comment">Awesome!</p>
+            			</div>
+            		</div>
+            	</li>
+            </ul>
+          </div>
+
+          <% if user_signed_in? %>  
+	          <div class="tab-pane" id="new-comment">
+	            <div id="feedback">
+	              <div class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
+	                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	                	<span aria-hidden="true">×</span>
+	                </button>
+	                Error. No comment provided or error processing request. Please try again.
+	              </div>
+	            </div>
+	              <form method="POST" action="http://learn-party.herokuapp.com/comments/create" accept-charset="UTF-8" class="form">
+	              	<input name="_token" type="hidden" value="BTRjZt7kOwwrVBEOGSUUNxtPByw5ivg52SDlOI47">
+	              	<div class="form-group">
+	                  <label for="comment">Comment</label>
+	                  <textarea class="form-control" id="comment" name="comment" cols="50" rows="10"></textarea>
+	                </div>
+	                <div class="form-group">
+	                  <button type="button" id="newComment" class="btn btn-success">
+	                      <i class="fa fa-btn comment"></i> Add comment
+	                  </button>
+	                </div>
+	              </form>
+	            </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>
