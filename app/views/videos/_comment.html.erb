@@ -1,0 +1,14 @@
+<% @comments.each do |comment| %>
+	<li class="media">
+		<a class="media-left" href="#">
+			<img class="media-object img-circle img-thumbnail" src="https://avatars.githubusercontent.com/u/16223627?v=3" alt="John Kariuki" style="width:100px;">
+		</a>
+		<div class="media-body">
+			<div class="well">
+				<h4 class="media-heading">John Kariuki</h4>
+				<h6 class="pull-right"><%= time_ago_in_words(comment.updated_at) %> ago</h6>
+				<p class="media-comment"><%= comment.body %></p>
+			</div>
+		</div>
+	</li>
+<% end %>

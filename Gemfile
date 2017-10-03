@@ -13,7 +13,7 @@ end
 
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'faker'
-gem 'pry'
+gem 'pry-rails', '~> 0.3.6'
 gem 'simple_form', '~> 3.5'
 gem 'acts-as-taggable-on', '~> 5.0'
 gem 'acts_as_votable', '~> 0.10.0'

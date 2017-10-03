@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171001220132) do
+ActiveRecord::Schema.define(version: 20171003070945) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "video_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["video_id"], name: "index_comments_on_video_id"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -99,7 +109,9 @@ ActiveRecord::Schema.define(version: 20171001220132) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "slug"
+    t.integer  "user_id"
     t.index ["slug"], name: "index_videos_on_slug", unique: true
+    t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
   create_table "votes", force: :cascade do |t|

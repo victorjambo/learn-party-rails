@@ -12,6 +12,9 @@ class VideosController < ApplicationController
 
   def show
     impressionist(@video)
+    @comment = Comment.new
+    @comment.video_id = @video.id
+    @comments = @video.comments
   end
 
   def new
@@ -22,7 +25,7 @@ class VideosController < ApplicationController
   end
 
   def create
-    @video = Video.new(video_params)
+    @video = current_user.videos.build(video_params)
 
     respond_to do |format|
       if @video.save
