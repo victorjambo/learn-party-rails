@@ -143,7 +143,7 @@ h1 {
 
 #landing-page {
   position: relative;
-  background: url("https://learn-party.herokuapp.com/images/bg.jpg");
+  background: url("/bg.jpg");
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;

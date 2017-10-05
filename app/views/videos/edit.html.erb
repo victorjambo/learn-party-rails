@@ -1,6 +1,24 @@
-<h1>Editing Video</h1>
-
-<%= render 'form', video: @video %>
-
-<%= link_to 'Show', @video %> |
-<%= link_to 'Back', videos_path %>
+<div id="main-content" class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<%= link_to "#{current_user.name}'s Profile", profile_index_path %>
+				</li>
+				<li class="list-group-item">
+					<%= link_to 'Add New video', new_video_path %>
+				</li>
+				<li class="list-group-item">
+					<%= link_to 'My Uploaded videos', uploads_profile_index_path %>
+				</li>
+				<li class="list-group-item">
+					<%= link_to 'My Favorited Videos', favourites_profile_index_path %>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-9">
+			<h1>Editing Video</h1>
+			<%= render 'form', video: @video %>
+		</div>
+	</div>
+</div>

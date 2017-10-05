@@ -11,23 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.input :title %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.input :tag_list %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.input :url %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.input :description %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+      <%= button_tag type: 'submit', id: "new-video",class: "btn btn-primary"  do %>
+        <i class="fa fa-btn fa-youtube-play"></i> Upload Video
+      <% end %>
   </div>
 <% end %>

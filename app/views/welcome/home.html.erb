@@ -6,7 +6,7 @@
     <div class="landing-page-call-to-action">
       <% if user_signed_in? %>
         <%= link_to 'ADD NEW VIDEO', new_video_path, class: "btn btn-default" %>
-        <%= link_to 'VIEW MY PROFILE', new_video_path, class: "btn btn-success" %>
+        <%= link_to 'VIEW MY PROFILE', profile_index_path, class: "btn btn-success" %>
 
       <% else %>
       	<%= link_to 'LOGIN', new_user_session_path,class: "btn btn-default"  %>

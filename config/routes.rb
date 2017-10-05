@@ -8,7 +8,13 @@ Rails.application.routes.draw do
   		put "unlike" => 'videos#downvote'
 		end
 	end
-	resources :users
+  resources :users
+	resources :profile do
+    collection do
+      get :favourites
+      get :uploads
+    end
+  end
   get 'welcome/home'
   get 'tags/:tag', to: 'videos#index', as: :tag
   root 'welcome#home'

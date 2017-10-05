@@ -1,0 +1,48 @@
+<div id="main-content" class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<%= link_to "#{current_user.name}'s Profile", profile_index_path %>
+				</li>
+				<li class="list-group-item">
+					<%= link_to 'Add New video', new_video_path %>
+				</li>
+				<li class="list-group-item">
+					<%= link_to 'My Uploaded videos', uploads_profile_index_path %>
+				</li>
+				<li class="list-group-item active">
+					<%= link_to 'My Favorited Videos', favourites_profile_index_path %>
+				</li>
+			</ul>
+		</div>
+
+		<div id="video-library" class="col-md-9">
+      <h1>My Favorite videos</h1>
+      <hr>      
+      <div id="video-library">
+        <div class="row">
+          <% @favourites.each do |favorite| %>
+            <div class="col-sm-4 col-md-4">
+              <%= link_to favorite do %>
+                <img class="video-iframe" src="http://img.youtube.com/vi/<%= favorite.url %>/0.jpg" allowfullscreen="">
+              <% end %>
+              <span class="pull-right dashboard-float">
+                <%= link_to favorite, id: "favorite_video", class: "favorite_video" do %>
+                  <i class="fa fa-heart likesVideo"></i>
+                  <span class="favorites-count incognito-text"> <%= favorite.get_upvotes.size %></span>
+                <% end %>
+              </span>
+              <section class="video">
+                <div class="title">
+                  <h4><%= link_to favorite.title, favorite %></h4>
+                </div>
+                <p><%= favorite.title %></p>
+              </section>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>
