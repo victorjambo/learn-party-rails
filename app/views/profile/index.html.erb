@@ -19,36 +19,39 @@
 		<div class="col-md-5 col-md-offsets-1">
 			<h2>Update Profile</h2>
 			<%= simple_form_for @user do |f| %>
-		        <div class="form-group">
-		            <%= f.input :email %>
-		        </div>
-		        <div class="form-group">
-		            <%= f.input :username, id: "username" %>
-		        </div>
-		        <div class="form-group">
-		            <%= f.input :name, id: "name" %>
-		        </div>
-		        <div class="form-group">
-		            <%= f.input :bio, id: "about", input_html: { cols: "50", rows: "10" } %>
-		        </div>
-		        <div class="form-group">
-		            <%= button_tag type: 'submit', id: "update-profile", class: "btn btn-primary"  do %>
-		                <i class="fa fa-btn fa-user"></i> Update Profile
-		            <% end %>
-		        </div>
-		    <% end %>
+        <div class="form-group">
+          <%= f.input :email %>
+        </div>
+        <div class="form-group">
+          <%= f.input :username, id: "username" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :name, id: "name" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :bio, id: "about", input_html: { cols: "50", rows: "10" } %>
+        </div>
+        <div class="form-group">
+          <%= button_tag type: 'submit', id: "update-profile", class: "btn btn-primary"  do %>
+            <i class="fa fa-btn fa-user"></i> Update Profile
+          <% end %>
+        </div>
+		  <% end %>
 		</div>
 		<div class="col-md-4">
 			<h2>Profile Picture</h2>
 			<img src="http://res.cloudinary.com/johnkariuki/image/upload/v1490700881/c6kmzhflnzr2zm0phwrp.jpg" style="width:250px;height:250px">
-			<form method="POST" action="http://learn-party.herokuapp.com/profile/edit/avatar" accept-charset="UTF-8" class="form uploadAvatar" enctype="multipart/form-data">
-				<input name="_method" type="hidden" value="PATCH">
-				<input name="_token" type="hidden" value="h0TmphHdbKuIiFjl7FwyEN6sAOcts6VG2sqJwIJt">
+			<%= simple_form_for @user do |f| %>
 				<div class="form-group">
-					<input id="avatar" style="display:none" data-url="/profile/edit/avatar" name="avatar" type="file">
-					<input style="display:none" type="submit" value="Upload avatar">
+					<%= f.input :avatar, as: :file %>
+					<%= button_tag type: 'submit', id: "uploadAvatar", class: "btn btn-success btn-sm"  do %>
+            <i class="fa fa-plus"></i> Upload Avatar
+          <% end %>
 				</div>
-			</form> <a href="#" id="uploadAvatar" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Upload Avatar</a>
+			<% end %>
+			
 		</div>
 	</div>
 </div>
+
+<!-- https://cloudinary.com/documentation/rails_carrierwave -->
