@@ -155,26 +155,19 @@
             <div id="user-profile">
               <div class="col-md-4">
                 <h4>About <%= link_to @user.name || @user.email, @user %></h4>
-                
-                <img src="https://avatars.githubusercontent.com/u/16223627?v=3" style="height:250px;border-radius: 5px;">
-                <p>
-
-
-                </p>
+                <%= image_tag(@user.avatar_url, style: "height:250px;border-radius: 5px;") %>
+                <p><%= @user.bio %></p>
               </div>
               <div class="col-md-8">
                 <h4>
-                                    <a href="http://learn-party.herokuapp.com/videos/1">
-                                        Little Bit More
-                                        
-                                    </a>
-                                </h4>
-                <iframe width="100%" height="325" src="http://www.youtube.com/embed/BzxjbS19MP0" allowfullscreen></iframe>
+                    <%= @user.videos.last %>
+                </h4>
+                <iframe width="100%" height="325" src="http://www.youtube.com/embed/<%= @user.videos.last.url %>" allowfullscreen></iframe>
               </div>
             </div>
           </div>
         </div>
-        <h3>Videos Posted by John Kariuki</h3>
+        <h3>Videos Posted by <%= link_to @user.name || @user.email, @user %></h3>
         <hr>
         <div id="video-library">
 
@@ -182,24 +175,25 @@
 
           <div class="row">
 
+            <% @user.videos.each do |video| %>
             <div class="col-sm-4 col-md-4">
-              <a href="http://learn-party.herokuapp.com/videos/1">
-                <img class="video-iframe" src="http://img.youtube.com/vi/BzxjbS19MP0/0.jpg" allowfullscreen="">
-              </a>
+              <%= link_to video do %>
+                <img class="video-iframe" src="http://img.youtube.com/vi/<%= video.url %>/0.jpg" allowfullscreen="">
+              <% end %>
+              <span class="pull-right dashboard-float">
+                <%= link_to video, id: "favorite_video", class: "favorite_video" do %>
+                  <i class="fa fa-heart likesVideo"></i>
+                  <span class="favorites-count incognito-text"> <%= video.get_upvotes.size %></span>
+                <% end %>
+              </span>
               <section class="video">
                 <div class="title">
-                  <h4>
-                                    <a href="http://learn-party.herokuapp.com/videos/1">
-                                    Little Bit More
-                                    
-                                    </a>
-                                </h4>
+                  <h4><%= link_to video.title, video %></h4>
                 </div>
-                <p>Published on Jul 27, 2016 &quot; Little Bit More&quot; is available at iTunes: http://smarturl.it/LittleBitMo
-                  <a href="http://learn-party.herokuapp.com/videos/1">. . .</a>
-                </p>
+                <p><%= video.title %></p>
               </section>
             </div>
+          <% end %>
 
           </div>
 
