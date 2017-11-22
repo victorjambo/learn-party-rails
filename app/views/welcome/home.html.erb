@@ -28,9 +28,11 @@
             </div>
             <div class="panel-body popular-videos">
               <span class="badge"><%= link_to 'All', videos_path %></span>
-              <span class="badge">
-              	<a href="#">pop</a>
-            	</span>
+              <% @tags.each do |tag| %>
+                <span class="badge">
+                	<%= link_to tag.name, tag_path(tag.name) %>
+              	</span>
+              <% end %>
             </div>
           </div>
         </div>
@@ -40,20 +42,13 @@
                       <h3 class="panel-title">Popular - Most Viewed</h3>
                   </div>
                   <div class="panel-body popular-videos">
+                    <% @popular_video.each  do |popular_video|%>
                       <h5 class="top-videos">
-                      <i class="fa fa-youtube-play"></i>
-                      <a href="#">Classic Man </a>
-                      <span class="incognito-text">(88)</span>
-                  </h5>
-                      <h5 class="top-videos">
-                      <i class="fa fa-youtube-play"></i>
-                      <a href="#">Little Bit More </a>
-                      <span class="incognito-text">(80)</span>
-                  </h5>
-                      <h5 class="top-videos">
-                      <i class="fa fa-youtube-play"></i>
-                      <a href="#">afsds </a>
-                      <span class="incognito-text">(44)</span>
+                        <i class="fa fa-youtube-play"></i>
+                        <%= link_to popular_video.title, popular_video %>
+                        <span class="incognito-text">(<%= popular_video.impressionist_count %>)</span>
+                      </h5>
+                    <% end %>
                   </h5>
                   </div>
               </div>
@@ -61,19 +56,16 @@
           <div class="col-md-12">
               <div class="panel panel-default">
                   <div class="panel-heading">
-                      <h3 class="panel-title">Popular - Most Liked</h3>
+                    <h3 class="panel-title">Popular - Most Liked</h3>
                   </div>
                   <div class="panel-body popular-videos">
+                    <% @videos.each do |video| %>
                       <h5 class="top-videos">
-                      <i class="fa fa-youtube-play"></i>
-                      <a href="#">ljljlj </a>
-                      <span class="incognito-text">(1)</span>
-                  </h5>
-                      <h5 class="top-videos">
-                      <i class="fa fa-youtube-play"></i>
-                      <a href="#">Little Bit More </a>
-                      <span class="incognito-text">(1)</span>
-                  </h5>
+                        <i class="fa fa-youtube-play"></i>
+                        <%= link_to video.title, video %>
+                        <span class="incognito-text">(<%= video.get_upvotes.size %>)</span>
+                      </h5>
+                    <% end %>
                   </div>
               </div>
           </div>
@@ -83,16 +75,13 @@
                       <h3 class="panel-title">Popular - Most commented on</h3>
                   </div>
                   <div class="panel-body popular-videos">
+                    <% @videos.each do |video| %>
                       <h5 class="top-videos">
-                      <i class="fa fa-youtube-play"></i>
-                      <a href="#">ljljlj </a>
-                      <span class="incognito-text">(1)</span>
-                  </h5>
-                      <h5 class="top-videos">
-                      <i class="fa fa-youtube-play"></i>
-                      <a href="#">Little Bit More </a>
-                      <span class="incognito-text">(1)</span>
-                  </h5>
+                        <i class="fa fa-youtube-play"></i>
+                        <%= link_to video.title, video %>
+                        <span class="incognito-text">(<%= video.comments.size%>)</span>
+                    </h5>
+                  <% end %>
                   </div>
               </div>
           </div>
@@ -101,22 +90,13 @@
                   <div class="panel-heading">
                       <h3 class="panel-title">Top video publishers</h3>
                   </div>
-                  <div class="panel-body popular-videos"> <span class="badge">
-                          <a href="#">John Kariuki</a>
-                          <span class="incognito-text">(1)</span>
-                      </span> <span class="badge">
-                          <a href="#">john</a>
-                          <span class="incognito-text">(1)</span>
-                      </span> <span class="badge">
-                          <a href="#">tyler malin</a>
-                          <span class="incognito-text">(1)</span>
-                      </span> <span class="badge">
-                          <a href="#">victor mutai</a>
-                          <span class="incognito-text">(1)</span>
-                      </span> <span class="badge">
-                          <a href="#">Fayez Mubarqui</a>
-                          <span class="incognito-text">(1)</span>
+                  <div class="panel-body popular-videos">
+                    <% @user.each do |user| %>
+                      <span class="badge">
+                        <%= link_to user.name, user %>
+                        <span class="incognito-text">(<%= user.videos.size %>)</span>
                       </span>
+                    <% end %>
                   </div>
               </div>
           </div>
